@@ -1,8 +1,8 @@
-# LC-0344 Reverse String
-# https://leetcode.com/problems/reverse-string/
-# Difficulty: Easy
+# Version: v3 (Alternative)
 
-# v3 (Alternative)
+# Approach:
+# Reverse using slicing (creates a new list)
 
 class Solution:
-    pass
+    def reverseString(self, s):
+        s[:] = s[::-1]

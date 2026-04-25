@@ -1,8 +1,14 @@
 # LC-0344 Reverse String
-# https://leetcode.com/problems/reverse-string/
-# Difficulty: Easy
+# Version: v1 (Initial)
 
-# v1
+# Approach:
+# Swap characters from both ends moving toward the center
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
 
 class Solution:
-    pass
+    def reverseString(self, s):
+        n = len(s)
+        for i in range(n // 2):
+            s[i], s[n - 1 - i] = s[n - 1 - i], s[i]

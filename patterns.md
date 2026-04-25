@@ -4,3 +4,6 @@
 
 ## arrays
 - LC-2078 → Two Furthest Houses With Different Colors
+
+## greedy
+- LC-0605 → Can Place Flowers
