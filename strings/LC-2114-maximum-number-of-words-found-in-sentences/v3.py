@@ -1,10 +1,11 @@
-# LC-2114 Maximum Number of Words Found in Sentences
-# Link: https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
-# Difficulty: Easy
-# Tags: Array, String
+# Version: v3 (Alternative - split)
 
-# Version: v3 (Alternative)
+# Approach:
+# Use split() to count words directly
+
+# Time Complexity: O(n * m)
+# Space Complexity: O(m) due to split
 
 class Solution:
-    def solve(self, n: int):
-        pass
+    def mostWordsFound(self, sentences):
+        return max(len(s.split()) for s in sentences)

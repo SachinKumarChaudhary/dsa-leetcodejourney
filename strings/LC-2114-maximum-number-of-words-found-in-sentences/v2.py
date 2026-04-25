@@ -1,10 +1,21 @@
-# LC-2114 Maximum Number of Words Found in Sentences
-# Link: https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
-# Difficulty: Easy
-# Tags: Array, String
-
 # Version: v2 (Refined)
 
+# Approach:
+# Track max directly without extra array
+
+# Time Complexity: O(n * m)
+# Space Complexity: O(1)
+
 class Solution:
-    def solve(self, n: int):
-        pass
+    def mostWordsFound(self, sentences):
+        ans = 0
+        
+        for sentence in sentences:
+            count = 1
+            for ch in sentence:
+                if ch == ' ':
+                    count += 1
+            
+            ans = max(ans, count)
+        
+        return ans
