@@ -1,8 +1,20 @@
-# LC-0058 Length of Last Word
-# https://leetcode.com/problems/length-of-last-word/
-# Difficulty: Easy
+# Version: v2 (Refined)
 
-# v2 (Refined)
+# Improvement:
+# Avoid creating new substring
 
 class Solution:
-    pass
+    def lengthOfLastWord(self, s):
+        i = len(s) - 1
+        length = 0
+
+        # skip trailing spaces
+        while i >= 0 and s[i] == " ":
+            i -= 1
+
+        # count last word
+        while i >= 0 and s[i] != " ":
+            length += 1
+            i -= 1
+
+        return length

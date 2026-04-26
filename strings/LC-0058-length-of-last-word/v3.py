@@ -1,8 +1,8 @@
-# LC-0058 Length of Last Word
-# https://leetcode.com/problems/length-of-last-word/
-# Difficulty: Easy
+# Version: v3 (Alternative)
 
-# v3 (Alternative)
+# Approach:
+# Split string and get last word
 
 class Solution:
-    pass
+    def lengthOfLastWord(self, s):
+        return len(s.split()[-1])
