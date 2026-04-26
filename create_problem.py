@@ -66,6 +66,7 @@ def init_readme():
         exit()
 
 def update_readme():
+    init_readme()
     rows = read_all_problems()
 
     easy = sum(1 for r in rows if "| Easy |" in r)
@@ -74,19 +75,36 @@ def update_readme():
     total = len(rows)
 
     recent = rows[-10:][::-1]
+
     recent_lines = []
     for r in recent:
-      parts = [p.strip() for p in r.split('|')]
-      # parts: ['', ID, Title, Difficulty, Topic, Pattern, Link, '']
-      title = parts[2]
-      diff = parts[3]
-      topic = parts[4]
-      link = parts[6]
-  
-      recent_lines.append(f"- {title} ({diff}, {topic}) → {link}")
+        parts = [p.strip() for p in r.split('|')]
+        title = parts[2]
+        diff = parts[3]
+        topic = parts[4]
+        link = parts[-2]
+        recent_lines.append(f"- {title} ({diff}, {topic}) → {link}")
 
     with open("README.md", "r") as f:
-        content = f.readlines()
+        content = f.read()
+
+    # FORCE replace stats (no fragile matching)
+    import re
+    content = re.sub(r"- Total: \d+", f"- Total: {total}", content)
+    content = re.sub(r"- Easy: \d+", f"- Easy: {easy}", content)
+    content = re.sub(r"- Medium: \d+", f"- Medium: {med}", content)
+    content = re.sub(r"- Hard: \d+", f"- Hard: {hard}", content)
+
+    # FORCE replace recent section
+    content = re.sub(
+        r"<!-- recent -->.*?---",
+        "<!-- recent -->\n" + "\n".join(recent_lines) + "\n\n---",
+        content,
+        flags=re.S
+    )
+
+    with open("README.md", "w") as f:
+        f.write(content)
 
     for i, l in enumerate(content):
         if l.startswith("- Total:"):
