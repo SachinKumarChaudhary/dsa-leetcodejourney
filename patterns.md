@@ -7,3 +7,6 @@
 
 ## greedy
 - LC-0605 → Can Place Flowers
+
+## math
+- LC-0009 → Palindrome Number
