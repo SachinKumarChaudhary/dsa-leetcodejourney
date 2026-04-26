@@ -1,8 +1,9 @@
-# LC-2235 Add Two Integers
-# https://leetcode.com/problems/add-two-integers/
-# Difficulty: Easy
+# Version: v2 (Refined)
 
-# v2 (Refined)
+# Approach:
+# Same as v1 but written more explicitly (useful for beginners)
 
 class Solution:
-    pass
+    def sum(self, num1, num2):
+        result = num1 + num2
+        return result

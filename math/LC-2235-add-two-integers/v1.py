@@ -1,8 +1,12 @@
 # LC-2235 Add Two Integers
-# https://leetcode.com/problems/add-two-integers/
-# Difficulty: Easy
+# Version: v1 (Direct)
 
-# v1
+# Approach:
+# Use built-in addition operator
+
+# Time Complexity: O(1)
+# Space Complexity: O(1)
 
 class Solution:
-    pass
+    def sum(self, num1, num2):
+        return num1 + num2
