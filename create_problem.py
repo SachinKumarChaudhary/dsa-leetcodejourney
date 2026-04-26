@@ -2,8 +2,7 @@
 import os, sys, subprocess, requests
 
 # ---------- helpers ----------
-def pad(n):
-    return f"{int(n):04d}"
+def pad(n): return f"{int(n):04d}"
 
 def run(cmd):
     try:
@@ -12,7 +11,8 @@ def run(cmd):
         return ""
 
 def get_clipboard():
-    return run("termux-clipboard-get")
+    txt = run("termux-clipboard-get")
+    return txt if txt else ""
 
 def fetch_leetcode(slug):
     url = "https://leetcode.com/graphql"
@@ -30,7 +30,9 @@ def fetch_leetcode(slug):
     try:
         r = requests.post(url, json=query, timeout=10)
         data = r.json()["data"]["question"]
-        return data["difficulty"], [t["name"] for t in data["topicTags"]]
+        diff = data["difficulty"]
+        tags = [t["name"] for t in data["topicTags"]]
+        return diff, tags
     except:
         return "Unknown", []
 
@@ -39,7 +41,33 @@ def write(path, content):
     with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
-# ---------- README ----------
+# ---------- problems.md (full list) ----------
+def init_problems_md():
+    if not os.path.exists("problems.md"):
+        with open("problems.md", "w") as f:
+            f.write("""# Problems
+
+| ID | Title | Difficulty | Topic | Link |
+|----|------|------------|------|------|
+""")
+
+def append_problem(num, title, slug, topic, diff):
+    init_problems_md()
+    line = f"| LC-{num} | {title} | {diff} | {topic} | https://leetcode.com/problems/{slug}/ |\n"
+    with open("problems.md", "a") as f:
+        f.write(line)
+
+def read_all_problems():
+    if not os.path.exists("problems.md"):
+        return []
+    rows = []
+    with open("problems.md", "r") as f:
+        for l in f:
+            if l.startswith("| LC-"):
+                rows.append(l.strip())
+    return rows
+
+# ---------- README dashboard ----------
 def init_readme():
     if not os.path.exists("README.md"):
         with open("README.md", "w") as f:
@@ -53,61 +81,65 @@ def init_readme():
 
 ---
 
+## 🔥 Recent Problems
+<!-- recent -->
+
+---
+
+➡️ Full list → problems.md
+
+---
+
 ## 🧠 Approach
 - v1 → My original thinking  
-- v2 → Improved / optimized  
-- v3 → Alternative approach  
-
----
-
-## 📂 Structure
-topic/LC-xxxx-problem/
-- v1.py
-- v2.py
-- v3.py
-- notes.md
-
----
-
-## 🔥 Problems
-
-| ID | Title | Difficulty | Topic | Link |
-|----|------|------------|------|------|
+- v2 → Improved  
+- v3 → Alternative  
 """)
 
-def update_readme(num, title, slug, topic, diff):
+def update_readme():
     init_readme()
+    rows = read_all_problems()
 
-    line = f"| LC-{num} | {title} | {diff} | {topic} | https://leetcode.com/problems/{slug}/ |\n"
+    # stats
+    easy = sum(1 for r in rows if "| Easy |" in r)
+    med  = sum(1 for r in rows if "| Medium |" in r)
+    hard = sum(1 for r in rows if "| Hard |" in r)
+    total = len(rows)
+
+    # recent (last 10)
+    recent = rows[-10:][::-1]  # latest first
+    recent_lines = [f"- {r.split('|')[1].strip()} {r.split('|')[2].strip()}" for r in recent]
 
     with open("README.md", "r") as f:
         content = f.readlines()
 
-    easy = medium = hard = 0
-
-    for l in content:
-        if "| LC-" in l:
-            if "Easy" in l: easy += 1
-            elif "Medium" in l: medium += 1
-            elif "Hard" in l: hard += 1
-
-    if diff == "Easy": easy += 1
-    elif diff == "Medium": medium += 1
-    elif diff == "Hard": hard += 1
-
-    total = easy + medium + hard
-
+    # update stats
     for i, l in enumerate(content):
         if l.startswith("- Total:"):
             content[i] = f"- Total: {total}\n"
         elif l.startswith("- Easy:"):
             content[i] = f"- Easy: {easy}\n"
         elif l.startswith("- Medium:"):
-            content[i] = f"- Medium: {medium}\n"
+            content[i] = f"- Medium: {med}\n"
         elif l.startswith("- Hard:"):
             content[i] = f"- Hard: {hard}\n"
 
-    content.append(line)
+    # update recent block
+    start = None
+    for i, l in enumerate(content):
+        if l.strip() == "<!-- recent -->":
+            start = i
+            break
+
+    if start is not None:
+        # remove old recent (until next --- or blank line)
+        j = start + 1
+        while j < len(content) and not content[j].startswith("---"):
+            content.pop(j)
+        # insert new recent
+        for line in recent_lines:
+            content.insert(start + 1, line + "\n")
+            start += 1
 
     with open("README.md", "w") as f:
         f.writelines(content)
@@ -115,7 +147,6 @@ def update_readme(num, title, slug, topic, diff):
 # ---------- patterns ----------
 def update_patterns(topic, num, title):
     path = "patterns.md"
-
     entry = f"- LC-{num} → {title}\n"
 
     if not os.path.exists(path):
@@ -126,14 +157,11 @@ def update_patterns(topic, num, title):
     with open(path, "r") as f:
         content = f.readlines()
 
-    found = False
     for i, line in enumerate(content):
         if line.strip() == f"## {topic}":
-            content.insert(i+1, entry)
-            found = True
+            content.insert(i + 1, entry)
             break
-
-    if not found:
+    else:
         content.append(f"\n## {topic}\n{entry}")
 
     with open(path, "w") as f:
@@ -160,10 +188,8 @@ def main():
     header = f"# LC-{num} {title}\n# {link}\n# Difficulty: {diff}\n\n"
 
     write(f"{base}/v1.py", header + "# v1\n\n" + clip)
-
-    write(f"{base}/v2.py", header + "# v2 (Refined)\n\nclass Solution:\n    pass\n")
-
-    write(f"{base}/v3.py", header + "# v3 (Alternative)\n\nclass Solution:\n    pass\n")
+    write(f"{base}/v2.py", header + "# v2\n\nclass Solution:\n    pass\n")
+    write(f"{base}/v3.py", header + "# v3\n\nclass Solution:\n    pass\n")
 
     write(f"{base}/notes.md", f"""# LC-{num} {title}
 
@@ -176,14 +202,12 @@ def main():
 ## When to use this again
 """)
 
-    update_readme(num, title, slug, topic, diff)
+    append_problem(num, title, slug, topic, diff)
+    update_readme()
     update_patterns(topic, num, title)
 
-    run("git add .")
-    run(f'git commit -m "LC-{num}: {title} [{diff}] ({topic})"')
-
     print(f"Done → {base}")
-    print("Run: git push")
+    print("Now: git add . && git commit -m 'LC-{num}: {title}' && git push")
 
 if __name__ == "__main__":
     main()
