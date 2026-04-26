@@ -4,6 +4,7 @@
 
 ## arrays
 - LC-0027 → Remove Element
+- LC-0027 → Remove Element
 - LC-2078 → Two Furthest Houses With Different Colors
 
 ## greedy

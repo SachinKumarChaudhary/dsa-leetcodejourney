@@ -12,3 +12,4 @@ A repo where I push my leetcode problem's solutions in c, python and others lang
 | LC-0009 | Palindrome Number | Easy | math | https://leetcode.com/problems/palindrome-number/ |
 | LC-2235 | Add Two Integers | Easy | math | https://leetcode.com/problems/add-two-integers/ |
 | LC-0027 | Remove Element | Easy | arrays | https://leetcode.com/problems/remove-element/ |
+| LC-0027 | Remove Element | Easy | arrays | https://leetcode.com/problems/remove-element/ |
