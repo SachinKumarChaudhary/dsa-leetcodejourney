@@ -21,17 +21,14 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 Each problem contains:
 
-- `v1.py` → My initial solution  
-- `v2.py` → Optimized solution  
-- `v3.py` → Alternative approach  
-- `notes.md` → Key learnings, mistakes, patterns  
+- v1.py → My initial solution  
+- v2.py → Optimized solution  
+- v3.py → Alternative approach  
+- notes.md → Key learnings  
 
 ---
 
-## 📚 Problem List
-
-➡️ Full list available in: **problems.md**
-
+➡️ Full list → problems.md
 ---
 
 ## 🧠 Approach Strategy
