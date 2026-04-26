@@ -1,8 +1,14 @@
 # LC-0027 Remove Element
-# https://leetcode.com/problems/remove-element/
-# Difficulty: Easy
+# Version: v1 (Initial - remove loop)
 
-# v1
+# Approach:
+# Repeatedly remove val from array
+
+# Time Complexity: O(n^2)
+# Space Complexity: O(1)
 
 class Solution:
-    pass
+    def removeElement(self, nums, val):
+        while val in nums:
+            nums.remove(val)
+        return len(nums)
