@@ -1,8 +1,12 @@
-# LC-0009 Palindrome Number
-# https://leetcode.com/problems/palindrome-number/
-# Difficulty: Easy
+# Version: v2 (Refined)
 
-# v2 (Refined)
+# Approach:
+# Use Python slicing to reverse
+
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 
 class Solution:
-    pass
+    def isPalindrome(self, x):
+        s = str(x)
+        return s == s[::-1]

@@ -10,3 +10,4 @@ A repo where I push my leetcode problem's solutions in c, python and others lang
 | LC-0344 | Reverse String | Easy | two-pointers | https://leetcode.com/problems/reverse-string/ |
 | LC-0605 | Can Place Flowers | Easy | greedy | https://leetcode.com/problems/can-place-flowers/ |
 | LC-0009 | Palindrome Number | Easy | math | https://leetcode.com/problems/palindrome-number/ |
+| LC-2235 | Add Two Integers | Easy | math | https://leetcode.com/problems/add-two-integers/ |

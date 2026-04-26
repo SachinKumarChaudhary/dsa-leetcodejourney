@@ -9,4 +9,5 @@
 - LC-0605 → Can Place Flowers
 
 ## math
+- LC-2235 → Add Two Integers
 - LC-0009 → Palindrome Number
