@@ -35,20 +35,39 @@ def init_problems_md():
 | ID | Title | Difficulty | Topic | Pattern | Link |
 |----|------|------------|------|--------|------|
 """)
+def infer_pattern(topic, title):
+    t = title.lower()
+
+    if topic == "two-pointers":
+        return "two pointers"
+    if topic == "greedy":
+        return "greedy"
+    if topic == "arrays":
+        return "array manipulation"
+    if topic == "strings":
+        return "string processing"
+    if topic == "math":
+        return "math / simulation"
+
+    return ""
 
 def append_problem(num, title, slug, topic, diff):
     init_problems_md()
-    line = f"| LC-{num} | {title} | {diff} | {topic} |  | https://leetcode.com/problems/{slug}/ |\n"
+    pattern = infer_pattern(topic, title)
+    line = f"| LC-{num} | {title} | {diff} | {topic} | {pattern} | https://leetcode.com/problems/{slug}/ |\n"
 
-    # prevent duplicates
-    if os.path.exists("problems.md"):
-        with open("problems.md", "r") as f:
-            if line in f.read():
-                print("⚠️ Problem already exists, skipping...")
-                return
+    with open("problems.md", "r", encoding="utf-8") as f:
+        existing = f.read()
 
-    with open("problems.md", "a") as f:
+    if f"LC-{num}" in existing:
+      print("⚠️ Problem ID already exists, skipping append...")
+      return False
+
+    with open("problems.md", "a", encoding="utf-8") as f:
         f.write(line)
+
+    print("✅ problems.md updated")
+    return True
 def read_all_problems():
     if not os.path.exists("problems.md"):
         return []
@@ -85,54 +104,31 @@ def update_readme():
         link = parts[-2]
         recent_lines.append(f"- {title} ({diff}, {topic}) → {link}")
 
-    with open("README.md", "r") as f:
+    import re
+
+    with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # FORCE replace stats (no fragile matching)
-    import re
-    content = re.sub(r"- Total: \d+", f"- Total: {total}", content)
-    content = re.sub(r"- Easy: \d+", f"- Easy: {easy}", content)
-    content = re.sub(r"- Medium: \d+", f"- Medium: {med}", content)
-    content = re.sub(r"- Hard: \d+", f"- Hard: {hard}", content)
+    new_content = content
 
-    # FORCE replace recent section
-    content = re.sub(
+    new_content = re.sub(r"- Total: \d+", f"- Total: {total}", new_content)
+    new_content = re.sub(r"- Easy: \d+", f"- Easy: {easy}", new_content)
+    new_content = re.sub(r"- Medium: \d+", f"- Medium: {med}", new_content)
+    new_content = re.sub(r"- Hard: \d+", f"- Hard: {hard}", new_content)
+
+    new_content = re.sub(
         r"<!-- recent -->.*?---",
         "<!-- recent -->\n" + "\n".join(recent_lines) + "\n\n---",
-        content,
+        new_content,
         flags=re.S
     )
 
-    with open("README.md", "w") as f:
-        f.write(content)
-
-    for i, l in enumerate(content):
-        if l.startswith("- Total:"):
-            content[i] = f"- Total: {total}\n"
-        elif l.startswith("- Easy:"):
-            content[i] = f"- Easy: {easy}\n"
-        elif l.startswith("- Medium:"):
-            content[i] = f"- Medium: {med}\n"
-        elif l.startswith("- Hard:"):
-            content[i] = f"- Hard: {hard}\n"
-
-    start = None
-    for i, l in enumerate(content):
-        if l.strip() == "<!-- recent -->":
-            start = i
-            break
-
-    if start is not None:
-        j = start + 1
-        while j < len(content) and content[j].strip() != "":
-            content.pop(j)
-        for line in recent_lines:
-            content.insert(start + 1, line + "\n")
-            start += 1
-
-    with open("README.md", "w") as f:
-        f.writelines(content)
-
+    if new_content != content:
+        with open("README.md", "w", encoding="utf-8") as f:
+            f.write(new_content)
+        print("✅ README updated")
+    else:
+        print("⚠️ README unchanged")
 # ---------- patterns ----------
 def update_patterns(topic, num, title):
     path = "patterns.md"
@@ -158,6 +154,8 @@ def update_patterns(topic, num, title):
 
 # ---------- MAIN ----------
 def main():
+    print("🚀 Script started")
+    print("ARGS:", sys.argv)
     if len(sys.argv) < 5:
         print("Usage: python create_problem.py <num> <slug> <topic> \"<title>\"")
         return
@@ -193,3 +191,6 @@ def main():
     update_patterns(topic, num, title)
 
     print(f"Done → {base}")
+    print("✅ Script executed successfully")
+if __name__ == "__main__":
+    main()

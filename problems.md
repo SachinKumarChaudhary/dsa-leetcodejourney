@@ -14,3 +14,4 @@
 | LC-2235 | Add Two Integers | Easy | math | math / simulation | https://leetcode.com/problems/add-two-integers/ |
 | LC-2833 | Furthest Point From Origin | Easy | greedy | greedy | https://leetcode.com/problems/furthest-point-from-origin/ |
 | LC-3783 | Mirror Distance of an Integer | Easy | math | math / simulation | https://leetcode.com/problems/mirror-distance-of-an-integer/ |
+| LC-0001 | Two Sum | Easy | arrays | array manipulation | https://leetcode.com/problems/two-sum/ |

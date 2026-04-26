@@ -5,15 +5,25 @@ A structured repository where I store my LeetCode solutions with multiple approa
 ---
 
 ## 📊 Progress
-- Total: 0
-- Easy: 0
-- Medium: 0
+- Total: 13
+- Easy: 12
+- Medium: 1
 - Hard: 0
 
 ---
 
 ## 🔥 Recent Problems
 <!-- recent -->
+- Two Sum (Easy, arrays) → https://leetcode.com/problems/two-sum/
+- Mirror Distance of an Integer (Easy, math) → https://leetcode.com/problems/mirror-distance-of-an-integer/
+- Furthest Point From Origin (Easy, greedy) → https://leetcode.com/problems/furthest-point-from-origin/
+- Add Two Integers (Easy, math) → https://leetcode.com/problems/add-two-integers/
+- Maximum Number of Words Found in Sentences (Easy, strings) → https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+- Two Furthest Houses With Different Colors (Easy, arrays) → https://leetcode.com/problems/two-furthest-houses-with-different-colors/
+- Maximum Distance Between a Pair of Values (Medium, two-pointers) → https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
+- Self Dividing Numbers (Easy, math) → https://leetcode.com/problems/self-dividing-numbers/
+- Can Place Flowers (Easy, greedy) → https://leetcode.com/problems/can-place-flowers/
+- Reverse String (Easy, two-pointers) → https://leetcode.com/problems/reverse-string/
 
 ---
 
