@@ -74,7 +74,16 @@ def update_readme():
     total = len(rows)
 
     recent = rows[-10:][::-1]
-   recent_lines = [f"- {r.split('|')[2].strip()} ({r.split('|')[3].strip()})" for r in recent]
+    recent_lines = []
+    for r in recent:
+      parts = [p.strip() for p in r.split('|')]
+      # parts: ['', ID, Title, Difficulty, Topic, Pattern, Link, '']
+      title = parts[2]
+      diff = parts[3]
+      topic = parts[4]
+      link = parts[6]
+  
+      recent_lines.append(f"- {title} ({diff}, {topic}) → {link}")
 
     with open("README.md", "r") as f:
         content = f.readlines()
@@ -97,7 +106,7 @@ def update_readme():
 
     if start is not None:
         j = start + 1
-        while j < len(content) and not content[j].startswith("---"):
+        while j < len(content) and content[j].strip() != "":
             content.pop(j)
         for line in recent_lines:
             content.insert(start + 1, line + "\n")
