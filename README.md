@@ -14,3 +14,4 @@ A repo where I push my leetcode problem's solutions in c, python and others lang
 | LC-0027 | Remove Element | Easy | arrays | https://leetcode.com/problems/remove-element/ |
 | LC-0027 | Remove Element | Easy | arrays | https://leetcode.com/problems/remove-element/ |
 | LC-0027 | Remove Element | Easy | arrays | https://leetcode.com/problems/remove-element/ |
+| LC-0058 | Length of Last Word | Easy | strings | https://leetcode.com/problems/length-of-last-word/ |
