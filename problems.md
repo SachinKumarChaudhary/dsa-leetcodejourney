@@ -15,3 +15,4 @@
 | LC-2833 | Furthest Point From Origin | Easy | greedy | greedy | https://leetcode.com/problems/furthest-point-from-origin/ |
 | LC-3783 | Mirror Distance of an Integer | Easy | math | math / simulation | https://leetcode.com/problems/mirror-distance-of-an-integer/ |
 | LC-0001 | Two Sum | Easy | arrays | array manipulation | https://leetcode.com/problems/two-sum/ |
+| LC-0066 | Plus One | Easy | arrays | array manipulation | https://leetcode.com/problems/plus-one/ |
