@@ -5,7 +5,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 ---
 
 ## 📊 Progress
-- Total: 14
+- Total: 15
 - Easy: 13
 - Medium: 1
 - Hard: 0
@@ -14,6 +14,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 ## 🔥 Recent Problems
 <!-- recent -->
+- Roman to Integer (Unknown, strings) → https://leetcode.com/problems/roman-to-integer/
 - Plus One (Easy, arrays) → https://leetcode.com/problems/plus-one/
 - Two Sum (Easy, arrays) → https://leetcode.com/problems/two-sum/
 - Mirror Distance of an Integer (Easy, math) → https://leetcode.com/problems/mirror-distance-of-an-integer/
@@ -23,7 +24,6 @@ A structured repository where I store my LeetCode solutions with multiple approa
 - Two Furthest Houses With Different Colors (Easy, arrays) → https://leetcode.com/problems/two-furthest-houses-with-different-colors/
 - Maximum Distance Between a Pair of Values (Medium, two-pointers) → https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
 - Self Dividing Numbers (Easy, math) → https://leetcode.com/problems/self-dividing-numbers/
-- Can Place Flowers (Easy, greedy) → https://leetcode.com/problems/can-place-flowers/
 
 ---
 
