@@ -5,8 +5,8 @@ A structured repository where I store my LeetCode solutions with multiple approa
 ---
 
 ## 📊 Progress
-- Total: 15
-- Easy: 13
+- Total: 16
+- Easy: 14
 - Medium: 1
 - Hard: 0
 
@@ -14,6 +14,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 ## 🔥 Recent Problems
 <!-- recent -->
+- Remove Duplicates from Sorted Array (Easy, two-pointers) → https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 - Roman to Integer (Unknown, strings) → https://leetcode.com/problems/roman-to-integer/
 - Plus One (Easy, arrays) → https://leetcode.com/problems/plus-one/
 - Two Sum (Easy, arrays) → https://leetcode.com/problems/two-sum/
@@ -23,7 +24,6 @@ A structured repository where I store my LeetCode solutions with multiple approa
 - Maximum Number of Words Found in Sentences (Easy, strings) → https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
 - Two Furthest Houses With Different Colors (Easy, arrays) → https://leetcode.com/problems/two-furthest-houses-with-different-colors/
 - Maximum Distance Between a Pair of Values (Medium, two-pointers) → https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
-- Self Dividing Numbers (Easy, math) → https://leetcode.com/problems/self-dividing-numbers/
 
 ---
 
