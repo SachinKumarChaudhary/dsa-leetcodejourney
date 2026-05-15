@@ -6,7 +6,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 ## 📊 Progress
 - Total: 16
-- Easy: 14
+- Easy: 15
 - Medium: 1
 - Hard: 0
 
