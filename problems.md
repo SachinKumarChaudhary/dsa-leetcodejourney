@@ -19,4 +19,3 @@
 | LC-0013 | Roman to Integer | Easy | strings | string processing | https://leetcode.com/problems/roman-to-integer/ |
 | LC-0026 | Remove Duplicates from Sorted Array | Easy | two-pointers | two pointers | https://leetcode.com/problems/remove-duplicates-from-sorted-array/ |
 | LC-0217 | Contains Duplicate | Easy | arrays | array manipulation | https://leetcode.com/problems/contains-duplicate/ |
-| LC-9999 | dummy | Unknown | arrays | array manipulation | https://leetcode.com/problems/dummy/ |

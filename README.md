@@ -6,7 +6,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 ## 📊 Progress
 
-- Total: 18
+- Total: 17
 - Easy: 16
 - Medium: 1
 - Hard: 0
@@ -15,7 +15,6 @@ A structured repository where I store my LeetCode solutions with multiple approa
 
 ## 🔥 Recent Problems
 <!-- recent -->
-- dummy (Unknown, arrays) → https://leetcode.com/problems/dummy/
 - Contains Duplicate (Easy, arrays) → https://leetcode.com/problems/contains-duplicate/
 - Remove Duplicates from Sorted Array (Easy, two-pointers) → https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 - Roman to Integer (Easy, strings) → https://leetcode.com/problems/roman-to-integer/
@@ -25,6 +24,7 @@ A structured repository where I store my LeetCode solutions with multiple approa
 - Furthest Point From Origin (Easy, greedy) → https://leetcode.com/problems/furthest-point-from-origin/
 - Add Two Integers (Easy, math) → https://leetcode.com/problems/add-two-integers/
 - Maximum Number of Words Found in Sentences (Easy, strings) → https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+- Two Furthest Houses With Different Colors (Easy, arrays) → https://leetcode.com/problems/two-furthest-houses-with-different-colors/
 
 ---
 

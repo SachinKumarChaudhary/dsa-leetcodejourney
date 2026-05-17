@@ -4,7 +4,6 @@
 - LC-1855 → Maximum Distance Between a Pair of Values
 
 ## arrays
-- LC-9999 → dummy
 - LC-0217 → Contains Duplicate
 - LC-0066 → Plus One
 - LC-0001 → Two Sum
@@ -22,5 +21,6 @@
 - LC-0009 → Palindrome Number
 
 ## strings
+- LC-0013 → Roman to Integer
 - LC-0013 → Roman to Integer
 - LC-0058 → Length of Last Word
