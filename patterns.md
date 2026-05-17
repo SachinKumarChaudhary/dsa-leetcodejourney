@@ -4,6 +4,7 @@
 - LC-1855 → Maximum Distance Between a Pair of Values
 
 ## arrays
+- LC-0217 → Contains Duplicate
 - LC-0066 → Plus One
 - LC-0001 → Two Sum
 - LC-0027 → Remove Element
